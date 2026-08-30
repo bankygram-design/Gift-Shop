@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-fraunces: "Fraunces", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-plex-mono: "IBM Plex Mono", monospace;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #211F1C;
+  background-color: #FAF6EF;
+  background-image:
+    radial-gradient(ellipse 1200px 800px at 15% -10%, rgba(176, 141, 87, 0.10), transparent 60%),
+    radial-gradient(ellipse 1000px 700px at 100% 10%, rgba(44, 74, 59, 0.07), transparent 55%),
+    radial-gradient(ellipse 900px 900px at 50% 100%, rgba(231, 201, 194, 0.12), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover, cover, cover, 120px 120px;
+}
+
+/* Signature element: gift-tag notch + string-hole on product cards */
+.gift-tag {
+  position: relative;
+  clip-path: polygon(
+    24px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 24px
+  );
+}
+
+.gift-tag::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #FAF6EF;
+  border: 1.5px solid #B08D57;
+  z-index: 10;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 28s linear infinite;
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #2C4A3B;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
