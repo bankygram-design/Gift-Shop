@@ -11,6 +11,10 @@ import Reveal from "@/components/Reveal";
 import HeroParallaxBackground from "@/components/HeroParallaxBackground";
 import { getCategories, getFeaturedProducts, getProducts } from "@/lib/products";
 import { siteConfig } from "@/lib/site-config";
+// Refresh this page's data at most once every 60 seconds, so new/edited
+// products from the admin dashboard show up here automatically without
+// needing a full redeploy.
+export const revalidate = 60;
 
 export default async function HomePage() {
   const [categories, allProducts, featured] = await Promise.all([
