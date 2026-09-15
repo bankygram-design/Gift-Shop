@@ -74,3 +74,61 @@ textarea:focus-visible {
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* ============================================
+   ADMIN SOFT-UI (neumorphic) UTILITIES
+   Used for buttons, icon controls, and sidebar nav
+   in the admin dashboard only. Tables/forms stay
+   flat and high-contrast for fast daily scanning.
+   ============================================ */
+
+.admin-canvas {
+  background-color: #F1EBDF;
+}
+
+.neu-raised {
+  background-color: #F1EBDF;
+  box-shadow:
+    6px 6px 12px rgba(33, 31, 28, 0.12),
+    -6px -6px 12px rgba(255, 255, 255, 0.8);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.neu-raised:hover {
+  box-shadow:
+    4px 4px 8px rgba(33, 31, 28, 0.14),
+    -4px -4px 8px rgba(255, 255, 255, 0.85);
+}
+
+.neu-raised:active {
+  box-shadow:
+    inset 3px 3px 6px rgba(33, 31, 28, 0.14),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+}
+
+.neu-pressed {
+  background-color: #F1EBDF;
+  box-shadow:
+    inset 3px 3px 6px rgba(33, 31, 28, 0.14),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+}
+
+.neu-icon-btn {
+  background-color: #F1EBDF;
+  box-shadow:
+    4px 4px 8px rgba(33, 31, 28, 0.12),
+    -4px -4px 8px rgba(255, 255, 255, 0.8);
+  transition: box-shadow 0.15s ease;
+}
+
+.neu-icon-btn:hover {
+  box-shadow:
+    2px 2px 5px rgba(33, 31, 28, 0.14),
+    -2px -2px 5px rgba(255, 255, 255, 0.85);
+}
+
+.neu-icon-btn:active {
+  box-shadow:
+    inset 2px 2px 4px rgba(33, 31, 28, 0.14),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+}

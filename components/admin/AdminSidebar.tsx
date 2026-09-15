@@ -5,40 +5,55 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   Package,
-  Tag,
+  Tags,
   ClipboardList,
   Settings,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const links = [
+const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
   { href: "/admin/products", label: "Products", icon: Package },
-  { href: "/admin/categories", label: "Categories", icon: Tag },
+  { href: "/admin/categories", label: "Categories", icon: Tags },
   { href: "/admin/orders", label: "Orders", icon: ClipboardList },
   { href: "/admin/settings", label: "Settings", icon: Settings },
 ];
 
-export default function AdminSidebar() {
+export default function AdminSidebar({
+  variant = "vertical",
+}: {
+  variant?: "vertical" | "horizontal";
+}) {
   const pathname = usePathname();
 
   return (
-    <nav className="flex shrink-0 gap-1 overflow-x-auto border-b border-charcoal/10 bg-white px-3 py-2 sm:w-56 sm:flex-col sm:overflow-visible sm:border-b-0 sm:border-r sm:px-4 sm:py-6">
-      {links.map(({ href, label, icon: Icon }) => {
-        const active = pathname === href;
+    <nav
+      className={cn(
+        variant === "vertical"
+          ? "flex flex-col gap-2 p-4"
+          : "flex w-max gap-2"
+      )}
+    >
+      {NAV_ITEMS.map((item) => {
+        const isActive =
+          item.href === "/admin"
+            ? pathname === "/admin"
+            : pathname.startsWith(item.href);
+        const Icon = item.icon;
+
         return (
           <Link
-            key={href}
-            href={href}
+            key={item.href}
+            href={item.href}
             className={cn(
-              "flex shrink-0 items-center gap-2.5 rounded-full px-4 py-2 text-sm transition-colors sm:rounded-xl",
-              active
-                ? "bg-forest text-ivory"
-                : "text-charcoal-soft hover:bg-ivory-dim hover:text-charcoal"
+              "flex shrink-0 items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium transition-colors",
+              isActive
+                ? "neu-pressed text-forest"
+                : "neu-raised text-charcoal-soft hover:text-forest"
             )}
           >
             <Icon className="h-4 w-4" strokeWidth={1.75} />
-            {label}
+            {item.label}
           </Link>
         );
       })}

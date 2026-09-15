@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import SignOutButton from "@/components/admin/SignOutButton";
@@ -13,24 +14,45 @@ export default async function AdminDashboardLayout({
     data: { user },
   } = await supabase.auth.getUser();
 
+  if (!user) {
+    redirect("/admin/login");
+  }
+
   return (
-    <div className="flex min-h-screen flex-col bg-ivory sm:flex-row">
-      <AdminSidebar />
-
-      <div className="flex-1">
-        <header className="flex items-center justify-between border-b border-charcoal/10 bg-white px-4 py-3 sm:px-8">
-          <p className="font-display italic text-charcoal">
-            {siteConfig.storeName} Admin
-          </p>
-          <div className="flex items-center gap-4">
-            <span className="hidden text-sm text-charcoal-soft sm:inline">
-              {user?.email}
-            </span>
-            <SignOutButton />
+    <div className="admin-canvas min-h-screen">
+      <div className="mx-auto flex max-w-7xl">
+        <aside className="hidden w-64 shrink-0 sm:block">
+          <div className="sticky top-0 flex h-screen flex-col">
+            <div className="px-6 py-6">
+              <p className="font-display text-lg italic text-charcoal">
+                {siteConfig.storeName}
+              </p>
+              <p className="text-xs text-charcoal-soft">Admin</p>
+            </div>
+            <div className="flex-1 overflow-y-auto">
+              <AdminSidebar />
+            </div>
+            <div className="p-4">
+              <SignOutButton />
+            </div>
           </div>
-        </header>
+        </aside>
 
-        <main className="px-4 py-8 sm:px-8">{children}</main>
+        <div className="min-w-0 flex-1">
+          <header className="flex items-center justify-between border-b border-charcoal/10 px-4 py-4 sm:hidden">
+            <p className="font-display text-lg italic text-charcoal">
+              {siteConfig.storeName} Admin
+            </p>
+            <SignOutButton />
+          </header>
+
+          {/* Mobile nav - horizontal scroll, same soft-UI treatment */}
+          <div className="overflow-x-auto border-b border-charcoal/10 px-4 py-3 sm:hidden">
+            <AdminSidebar variant="horizontal" />
+          </div>
+
+          <main className="px-4 py-8 sm:px-8 sm:py-10">{children}</main>
+        </div>
       </div>
     </div>
   );
