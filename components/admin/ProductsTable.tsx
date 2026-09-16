@@ -66,14 +66,14 @@ export default function ProductsTable({
 
   if (products.length === 0) {
     return (
-      <div className="rounded-card bg-white p-8 text-center text-sm text-charcoal-soft shadow-card">
+      <div className="neu-raised rounded-3xl p-8 text-center text-sm text-charcoal-soft">
         No products yet. Click "Add Product" to create your first one.
       </div>
     );
   }
 
   return (
-    <div className="rounded-card bg-white shadow-card">
+    <div className="rounded-3xl bg-white shadow-sm">
       {error && (
         <p className="border-b border-charcoal/10 bg-red-50 px-6 py-3 text-sm text-red-600">
           {error}
@@ -133,10 +133,10 @@ export default function ProductsTable({
                     disabled={busyId === product.id}
                     onClick={() => toggleField(product, "is_available")}
                     className={cn(
-                      "rounded-full px-3 py-1 text-xs font-medium",
+                      "rounded-full px-3 py-1.5 text-xs font-medium transition-all",
                       product.is_available
-                        ? "bg-forest/10 text-forest"
-                        : "bg-charcoal/10 text-charcoal-soft"
+                        ? "neu-pressed text-forest"
+                        : "neu-raised text-charcoal-soft"
                     )}
                   >
                     {product.is_available ? "Available" : "Disabled"}
@@ -148,32 +148,32 @@ export default function ProductsTable({
                     disabled={busyId === product.id}
                     onClick={() => toggleField(product, "is_featured")}
                     className={cn(
-                      "rounded-full px-3 py-1 text-xs font-medium",
+                      "rounded-full px-3 py-1.5 text-xs font-medium transition-all",
                       product.is_featured
-                        ? "bg-brass/20 text-brass"
-                        : "bg-charcoal/10 text-charcoal-soft"
+                        ? "neu-pressed text-brass"
+                        : "neu-raised text-charcoal-soft"
                     )}
                   >
                     {product.is_featured ? "Featured" : "Not Featured"}
                   </button>
                 </td>
                 <td className="px-4 py-3">
-                  <div className="flex justify-end gap-3">
+                  <div className="flex justify-end gap-2">
                     <Link
                       href={`/admin/products/${product.id}/edit`}
                       aria-label={`Edit ${product.name}`}
-                      className="p-1 text-charcoal-soft hover:text-forest"
+                      className="neu-icon-btn flex h-8 w-8 items-center justify-center rounded-full text-charcoal-soft hover:text-forest"
                     >
-                      <Pencil className="h-4 w-4" />
+                      <Pencil className="h-3.5 w-3.5" />
                     </Link>
                     <button
                       type="button"
                       aria-label={`Delete ${product.name}`}
                       disabled={busyId === product.id}
                       onClick={() => handleDelete(product)}
-                      className="p-1 text-charcoal-soft hover:text-red-600"
+                      className="neu-icon-btn flex h-8 w-8 items-center justify-center rounded-full text-charcoal-soft hover:text-red-600"
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-3.5 w-3.5" />
                     </button>
                   </div>
                 </td>

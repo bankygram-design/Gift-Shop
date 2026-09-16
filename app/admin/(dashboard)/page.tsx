@@ -18,9 +18,9 @@ export default async function AdminDashboardPage() {
     <div>
       <h1 className="font-display text-2xl italic text-charcoal">Dashboard</h1>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <div className="flex items-center gap-4 rounded-card bg-white p-6 shadow-card">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-forest/10">
+      <div className="mt-6 grid gap-5 sm:grid-cols-2">
+        <div className="neu-raised flex items-center gap-4 rounded-3xl p-6">
+          <div className="neu-pressed flex h-12 w-12 items-center justify-center rounded-full">
             <Package className="h-5 w-5 text-forest" strokeWidth={1.75} />
           </div>
           <div>
@@ -29,8 +29,8 @@ export default async function AdminDashboardPage() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4 rounded-card bg-white p-6 shadow-card">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brass/15">
+        <div className="neu-raised flex items-center gap-4 rounded-3xl p-6">
+          <div className="neu-pressed flex h-12 w-12 items-center justify-center rounded-full">
             <ClipboardList className="h-5 w-5 text-brass" strokeWidth={1.75} />
           </div>
           <div>
@@ -40,7 +40,7 @@ export default async function AdminDashboardPage() {
         </div>
       </div>
 
-      <div className="mt-8 rounded-card bg-white p-6 shadow-card">
+      <div className="mt-8 rounded-3xl bg-white p-6 shadow-sm">
         <div className="flex items-center justify-between">
           <h2 className="font-display text-lg italic text-charcoal">
             Recent Orders
