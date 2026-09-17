@@ -62,7 +62,7 @@ export default function StoreSettingsForm({ initial }: { initial: StoreSettingsR
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5 rounded-card bg-white p-6 shadow-card">
+    <form onSubmit={handleSubmit} className="neu-raised flex flex-col gap-5 rounded-3xl p-6">
       <div>
         <label htmlFor="store_name" className="text-sm font-medium text-charcoal">
           Store Name
@@ -72,7 +72,7 @@ export default function StoreSettingsForm({ initial }: { initial: StoreSettingsR
           type="text"
           value={form.store_name}
           onChange={(e) => update("store_name", e.target.value)}
-          className="mt-1.5 w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-forest"
+          className="mt-1.5 w-full rounded-xl border border-charcoal/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-forest"
         />
       </div>
 
@@ -86,7 +86,7 @@ export default function StoreSettingsForm({ initial }: { initial: StoreSettingsR
           placeholder="2348012345678"
           value={form.whatsapp_number}
           onChange={(e) => update("whatsapp_number", e.target.value)}
-          className="mt-1.5 w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm font-mono outline-none focus:border-forest"
+          className="mt-1.5 w-full rounded-xl border border-charcoal/15 bg-white px-4 py-2.5 text-sm font-mono outline-none focus:border-forest"
         />
         <p className="mt-1 text-xs text-charcoal-soft">
           International format, digits only - no + sign, no spaces (e.g. 2348012345678).
@@ -104,7 +104,7 @@ export default function StoreSettingsForm({ initial }: { initial: StoreSettingsR
             type="text"
             value={form.phone ?? ""}
             onChange={(e) => update("phone", e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-forest"
+            className="mt-1.5 w-full rounded-xl border border-charcoal/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-forest"
           />
         </div>
         <div>
@@ -116,7 +116,7 @@ export default function StoreSettingsForm({ initial }: { initial: StoreSettingsR
             type="email"
             value={form.email ?? ""}
             onChange={(e) => update("email", e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-forest"
+            className="mt-1.5 w-full rounded-xl border border-charcoal/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-forest"
           />
         </div>
       </div>
@@ -130,7 +130,7 @@ export default function StoreSettingsForm({ initial }: { initial: StoreSettingsR
           type="text"
           value={form.address ?? ""}
           onChange={(e) => update("address", e.target.value)}
-          className="mt-1.5 w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-forest"
+          className="mt-1.5 w-full rounded-xl border border-charcoal/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-forest"
         />
       </div>
 
@@ -145,7 +145,7 @@ export default function StoreSettingsForm({ initial }: { initial: StoreSettingsR
             placeholder="@bysimongifts"
             value={form.instagram ?? ""}
             onChange={(e) => update("instagram", e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-forest"
+            className="mt-1.5 w-full rounded-xl border border-charcoal/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-forest"
           />
         </div>
         <div>
@@ -157,7 +157,7 @@ export default function StoreSettingsForm({ initial }: { initial: StoreSettingsR
             type="text"
             value={form.logo_url ?? ""}
             onChange={(e) => update("logo_url", e.target.value)}
-            className="mt-1.5 w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-forest"
+            className="mt-1.5 w-full rounded-xl border border-charcoal/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-forest"
           />
         </div>
       </div>
@@ -174,7 +174,7 @@ export default function StoreSettingsForm({ initial }: { initial: StoreSettingsR
       <button
         type="submit"
         disabled={saving}
-        className="self-start rounded-full bg-forest px-6 py-3 text-sm font-medium text-ivory transition-colors hover:bg-forest-dark disabled:cursor-not-allowed disabled:opacity-60"
+        className="self-start rounded-full bg-forest px-6 py-3 text-sm font-medium text-ivory shadow-[4px_4px_10px_rgba(44,74,59,0.25)] transition-colors hover:bg-forest-dark disabled:cursor-not-allowed disabled:opacity-60"
       >
         {saving ? "Saving..." : "Save Settings"}
       </button>

@@ -99,7 +99,7 @@ export default function CategoriesManager({
     <div className="flex flex-col gap-6">
       <form
         onSubmit={handleAdd}
-        className="flex flex-wrap items-end gap-3 rounded-card bg-white p-6 shadow-card"
+        className="neu-raised flex flex-wrap items-end gap-3 rounded-3xl p-6"
       >
         <div className="w-20">
           <label className="text-sm font-medium text-charcoal">Emoji</label>
@@ -108,7 +108,7 @@ export default function CategoriesManager({
             value={newEmoji}
             onChange={(e) => setNewEmoji(e.target.value)}
             placeholder="🎁"
-            className="mt-1.5 w-full rounded-xl border border-charcoal/15 px-3 py-2.5 text-center text-sm outline-none focus:border-forest"
+            className="mt-1.5 w-full rounded-xl border border-charcoal/15 bg-white px-3 py-2.5 text-center text-sm outline-none focus:border-forest"
           />
         </div>
         <div className="flex-1 min-w-[180px]">
@@ -118,7 +118,7 @@ export default function CategoriesManager({
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
             placeholder="e.g. Anniversary Gifts"
-            className="mt-1.5 w-full rounded-xl border border-charcoal/15 px-4 py-2.5 text-sm outline-none focus:border-forest"
+            className="mt-1.5 w-full rounded-xl border border-charcoal/15 bg-white px-4 py-2.5 text-sm outline-none focus:border-forest"
           />
         </div>
         <button
@@ -134,7 +134,7 @@ export default function CategoriesManager({
         <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">{error}</p>
       )}
 
-      <div className="rounded-card bg-white shadow-card">
+      <div className="rounded-3xl bg-white shadow-sm">
         <table className="w-full text-left text-sm">
           <thead>
             <tr className="border-b border-charcoal/10 text-charcoal-soft">
@@ -169,24 +169,24 @@ export default function CategoriesManager({
                   />
                 </td>
                 <td className="px-4 py-3">
-                  <div className="flex justify-end gap-3">
+                  <div className="flex justify-end gap-2">
                     <button
                       type="button"
                       aria-label={`Save ${category.name}`}
                       disabled={busyId === category.id}
                       onClick={() => handleSave(category)}
-                      className="p-1 text-charcoal-soft hover:text-forest"
+                      className="neu-icon-btn flex h-8 w-8 items-center justify-center rounded-full text-charcoal-soft hover:text-forest"
                     >
-                      <Save className="h-4 w-4" />
+                      <Save className="h-3.5 w-3.5" />
                     </button>
                     <button
                       type="button"
                       aria-label={`Delete ${category.name}`}
                       disabled={busyId === category.id}
                       onClick={() => handleDelete(category)}
-                      className="p-1 text-charcoal-soft hover:text-red-600"
+                      className="neu-icon-btn flex h-8 w-8 items-center justify-center rounded-full text-charcoal-soft hover:text-red-600"
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-3.5 w-3.5" />
                     </button>
                   </div>
                 </td>

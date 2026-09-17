@@ -73,14 +73,14 @@ export default function OrdersTable({ initialOrders }: { initialOrders: Order[] 
 
   if (orders.length === 0) {
     return (
-      <div className="rounded-card bg-white p-8 text-center text-sm text-charcoal-soft shadow-card">
+      <div className="neu-raised rounded-3xl p-8 text-center text-sm text-charcoal-soft">
         No orders yet.
       </div>
     );
   }
 
   return (
-    <div className="rounded-card bg-white shadow-card">
+    <div className="rounded-3xl bg-white shadow-sm">
       {error && (
         <p className="border-b border-charcoal/10 bg-red-50 px-6 py-3 text-sm text-red-600">
           {error}
@@ -90,7 +90,7 @@ export default function OrdersTable({ initialOrders }: { initialOrders: Order[] 
         <table className="w-full text-left text-sm">
           <thead>
             <tr className="border-b border-charcoal/10 text-charcoal-soft">
-              <th className="w-8 px-6 py-3"></th>
+              <th className="w-12 px-6 py-3"></th>
               <th className="px-4 py-3 font-medium">Order</th>
               <th className="px-4 py-3 font-medium">Customer</th>
               <th className="px-4 py-3 font-medium">Phone</th>
@@ -109,12 +109,14 @@ export default function OrdersTable({ initialOrders }: { initialOrders: Order[] 
                   )}
                   onClick={() => toggleExpand(order)}
                 >
-                  <td className="px-6 py-3 text-charcoal-soft">
-                    {expandedId === order.id ? (
-                      <ChevronUp className="h-4 w-4" />
-                    ) : (
-                      <ChevronDown className="h-4 w-4" />
-                    )}
+                  <td className="px-6 py-3">
+                    <span className="neu-icon-btn flex h-7 w-7 items-center justify-center rounded-full text-charcoal-soft">
+                      {expandedId === order.id ? (
+                        <ChevronUp className="h-3.5 w-3.5" />
+                      ) : (
+                        <ChevronDown className="h-3.5 w-3.5" />
+                      )}
+                    </span>
                   </td>
                   <td className="px-4 py-3 font-mono text-charcoal">
                     #{order.order_number}
