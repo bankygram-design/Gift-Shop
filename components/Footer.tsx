@@ -37,6 +37,7 @@ export default function Footer() {
               <li>WhatsApp ordering available</li>
               {phone && <li>{phone}</li>}
               {email && <li>{email}</li>}
+              <li><Link href="/privacy" className="transition-colors hover:text-brass">Privacy Policy & Terms</Link></li>
             </ul>
           </div>
         </div>
