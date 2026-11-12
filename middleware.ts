@@ -2,6 +2,23 @@ import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
+  const path = request.nextUrl.pathname;
+  const isAdminRoute = path.startsWith("/admin");
+
+  // Maintenance mode: shoppers see the maintenance page. The admin area stays
+  // reachable so the store owner can still log in. Turn it on by setting
+  // MAINTENANCE_MODE=true in Vercel (Production environment) and redeploying.
+  if (
+    process.env.MAINTENANCE_MODE === "true" &&
+    !isAdminRoute &&
+    path !== "/maintenance"
+  ) {
+    return NextResponse.rewrite(new URL("/maintenance", request.url));
+  }
+
+  // Shoppers on normal pages don't need auth checks.
+  if (!isAdminRoute) return NextResponse.next();
+
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(
@@ -31,11 +48,7 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const path = request.nextUrl.pathname;
   const isLoginPage = path === "/admin/login";
-  const isAdminRoute = path.startsWith("/admin");
-
-  if (!isAdminRoute) return response;
 
   let isAdmin = false;
   if (user) {
@@ -61,5 +74,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  // Run on every page, but skip Next.js internals and static files
+  // (anything with a file extension, like .png or .ico).
+  matcher: ["/((?!_next/static|_next/image|.*\\..*).*)"],
 };
