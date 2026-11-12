@@ -1,4 +1,4 @@
-import { supabase, isSupabaseConfigured } from "./supabase/client";
+import { cachedSupabase as supabase, isSupabaseConfigured } from "./supabase/cached";
 import { placeholderCategories, placeholderProducts } from "./placeholder-data";
 import type { Category, Product } from "./types";
 
