@@ -1,4 +1,4 @@
-import { supabase, isSupabaseConfigured } from "./supabase/client";
+import { cachedSupabase as supabase, isSupabaseConfigured } from "./supabase/cached";
 import { siteConfig } from "./site-config";
 
 export interface StoreSettings {
